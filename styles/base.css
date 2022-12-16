@@ -8,10 +8,6 @@ body *::after {
   box-sizing: border-box;
 }
 
-[class] {
-  margin: 0;
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -27,6 +23,9 @@ body {
 }
 
 /* 유연한 미디어 */
+/* 부모에 따라 너비가 넓어짐, 원본 크기 이상으로 커지지 않음 */
+/* 너비의 변화에따라 변한다 */
+/* 부모크기만큼 늘린다 */
 img {
   max-width: 100%;
   height: auto;
