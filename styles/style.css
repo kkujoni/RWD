@@ -24,12 +24,10 @@
   display: block;
   width: 100%;
   height: 100%;
-  background: url(./../images/webcafe-logo.png) no-repeat 0 0/100%;
+  background: url(./../images/webcafe-logo.png) no-repeat 0 0/100% 100%;
 }
 
-
-
-/* 공통멤버서비스 */
+/* 공통 멤버서비스 */
 .memberOnly {
   display: flex;
   flex-flow: row nowrap;
@@ -37,13 +35,14 @@
 }
 
 /* 공통 검색 폼 */
-
 input[type="search"] {
   -webkit-appearance: none;
   appearance: none;
 }
+
 .searchForm__group {
   display: flex;
+  flex-flow: row nowrap;
 }
 
 .searchForm__group .formInput {
@@ -63,8 +62,8 @@ input[type="search"] {
   cursor: pointer;
   height: 2rem;
   border-radius: 0.25rem;
-  padding:var(--spacing-sxxs) var(--spacing-sm);
-  white-space: nowrap;
+  padding: var(--spacing-sxxs) var(--spacing-sm);
+  flex: 0 0 auto;
   font-size: var(--text-sm);
 }
 
@@ -86,32 +85,6 @@ input[type="search"] {
   border: 1px solid currentColor;
 }
 
-/* 데스크탑 디바이스 (Desktop Device) */
-@media (min-width: 769px) {
-  /* 데스크탑 헤더 */
-  .appHeader {
-    max-width: var(--container-width);
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* 데스크탑 로고 */
-  .logo {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
-
-/* 데스크탑 검색 폼 */
-.searchForm__group {
-  justify-content: flex-end;
-}
-
-.searchForm__group .formInput {
-  width: 25rem;
-}
-
 /* 모바일 디바이스 (Mobile Device) */
 @media (min-width: 320px) and (max-width: 768px) {
   /* 모바일 헤더 */
@@ -130,19 +103,140 @@ input[type="search"] {
   .searchForm__group .formInput {
     flex-grow: 1;
   }
+
+  /* 모바일 메뉴 제어 버튼 시작 */
+  .buttonWrapper {
+    padding: var(--spacing-xxs);
+    overflow: hidden;
+    position: absolute;
+    top: 3.75rem;
+    right: var(--spacing-lg);
+    transform: translate(-0.25rem,-0.25rem);
+  }
+
+  .button--burger {
+    position: relative;
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .button--burger:focus {
+    outline-offset: 2px;
+  }
+
+  .button--burgerBarTop,
+  .button--burgerBarMiddle,
+  .button--burgerBarBottom {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    background: var(--white);
+    border-radius: 0.25rem;
+    left: 0;
+    transition: all 200ms;
+  }
+
+  .button--burgerBarTop {
+    top: 0;
+  }
+
+  .button--burgerBarMiddle {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .button--burgerBarBottom {
+    top: 100%;
+    transform: translateY(-100%);
+  }
+
+  .button--burger.is--active .button--burgerBarMiddle {
+    transform: translate(-150%, -50%);
+  }
+
+  .button--burger.is--active .button--burgerBarTop {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  .button--burger.is--active .button--burgerBarBottom {
+    top: 50%;
+    transform: translateY(-50%) rotate(-45deg);
+  }
+
+  /* 모바일 메뉴 제어 버튼 종료 */
+}
+
+/* 데스크탑 디바이스 (Desktop Device) */
+@media (min-width: 769px) {
+  /* 데스크탑 헤더 */
+  .appHeader {
+    max-width: var(--container-width);
+    margin-left: auto;
+    margin-right: auto;
+    background-color: gold;
+  }
+
+  /* 데스크탑 로고 */
+  .logo {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* 데스크탑 검색 폼 */
+  .searchForm__group {
+    justify-content: flex-end;
+  }
+
+  .searchForm__group .formInput {
+    width: 25rem;
+  }
+
+  /* 데스크탑 메인메뉴 제어버튼 */
+  .button--burger {
+    display: none;
+  }
+
+  /* 데스크탑 메인 메뉴 */
+
+  .menu{
+  background-color: var(--secondary-color);
+  height: 40px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+
+  }
+
+  .menu__list{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  background-color: violet;
+  /* margin-auto 이용하여 중앙정렬 except flex */
+}
+.menu__item{
+  flex-flow: row nowrap;
+
+
+  }
+  .menu__link{
+    color: #fff;
+    text-decoration: solid 2px black;
+
+  }
+
 }
 
 /* 고해상도 배경이미지 미디어쿼리 */
 @media (-webkit-min-device-pixel-ratio: 2),
-(min--moz-device-pixel-ratio: 2),
-(-o-min-device-pixel-ratio: 2/1),
-(min-device-pixel-ratio: 2),
+  (min--moz-device-pixel-ratio: 2),
+  (-o-min-device-pixel-ratio: 2/1),
+  (min-device-pixel-ratio: 2),
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .logo__link {
     background-image: url(./../images/webcafe-logo@2x.png);
   }
 }
-
-
-
